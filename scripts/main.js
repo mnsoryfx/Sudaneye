@@ -58,19 +58,29 @@ class BlogPostsWidget {
   }
 
   processPosts(entries) {
-    return entries.map(entry => ({
-      title: this.sanitize(entry.title.$t),
-      url: entry.link.find(l => l.rel === 'alternate').href,
-      image: this.getImageUrl(entry),
-    }));
+    return entries.map(entry => {
+      const content = entry.content?.$t || entry.summary?.$t || '';
+      const snippet = this.stripHtml(content).split(/\s+/).slice(0, 20).join(' ') + '...';
+      return {
+        title: this.sanitize(entry.title.$t),
+        url: entry.link.find(l => l.rel === 'alternate').href,
+        image: this.getImageUrl(content),
+        snippet
+      };
+    });
   }
 
-  getImageUrl(entry) {
-    const content = entry.content?.$t || entry.summary?.$t || '';
+  getImageUrl(content) {
     const imgMatch = content.match(/<img[^>]+src=["'](.*?)["']/);
     return imgMatch 
       ? imgMatch[1]
-      : 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDAgMjAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjVmNWY1Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzY2NiI+2KfZhNio2YrYqTwvdGV4dD48L3N2Zz4=';
+      : 'https://via.placeholder.com/300x200?text=SudanEye';
+  }
+
+  stripHtml(html) {
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    return div.textContent || div.innerText || '';
   }
 
   sanitize(text) {
@@ -78,29 +88,34 @@ class BlogPostsWidget {
   }
 
   renderPosts(posts) {
-    this.container.innerHTML = posts.map(post => `
-      <article class="blog-post">
-        <div class="post-content-wrapper">
-          <a href="${post.url}" class="post-image">
-            <img src="${post.image}" alt="${post.title}" loading="lazy">
+    const rows = posts.map(post => `
+      <div class="col-md-4 mb-4">
+        <article class="blog-post h-100 d-flex flex-column shadow-sm border rounded overflow-hidden">
+          <a href="${post.url}" class="post-image d-block">
+            <img src="${post.image}" class="img-fluid" alt="${post.title}" loading="lazy">
           </a>
-          <div class="text-content">
-            <h3 class="post-title"><a href="${post.url}">${post.title}</a></h3>
+          <div class="p-3 d-flex flex-column flex-grow-1">
+            <h5 class="post-title mb-2"><a href="${post.url}">${post.title}</a></h5>
+            <p class="text-muted small flex-grow-1">${post.snippet}</p>
+            <a href="${post.url}" class="btn btn-outline-primary btn-sm mt-2 align-self-start">اقرأ المزيد</a>
           </div>
-        </div>
-      </article>
+        </article>
+      </div>
     `).join('');
+
+    this.container.innerHTML = `<div class="row">${rows}</div>`;
   }
 
   showError(message) {
     this.container.innerHTML = `
-      <div class="blog-error">
-        <p>⚠️ ${message}</p>
+      <div class="alert alert-warning text-center" role="alert">
+        ⚠️ ${message}
       </div>
     `;
   }
 }
 
+// **تشغيل الويدجت**
 document.addEventListener('DOMContentLoaded', async () => {
   const containers = document.querySelectorAll('[data-config]');
   for (let i = 0; i < containers.length; i++) {
