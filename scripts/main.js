@@ -118,3 +118,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     await new Promise(resolve => setTimeout(resolve, 1000));
   }
 });
+function toggleLabel(button) {
+  const label = button.querySelector('.label');
+  label.classList.toggle('show');
+}
