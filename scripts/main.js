@@ -88,7 +88,7 @@ class BlogPostsWidget {
 
   renderPosts(posts) {
     this.container.innerHTML = posts.map(post => `
-      <article class="Blog-Post col-12 col-md-6 col-lg-4">
+      <article class="Blog-Post col-12 col-md-6 col-lg-6">
         <a href="${post.url}" class="post-image">
           <img src="${post.image}" alt="${post.title}" loading="lazy">
         </a>
