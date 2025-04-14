@@ -22,160 +22,31 @@
     <!-- Bootstrap RTL -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
     <!-- Optional: Custom CSS for page style -->
-<style>
-html {
-  scroll-behavior: smooth;
-  direction: rtl;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  overflow-x: hidden;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-header {
-  background-color: #007bff;
-  color: white;
-  padding: 20px 0;
-  text-align: center;
-}
-
-footer {
-  background-color: #333;
-  color: white;
-  padding: 10px 0;
-  text-align: center;
-}
-
-.content {
-  padding: 40px 15px;
-}
-
-.card-body {
-  text-align: center;
-}
-
-.card {
-  margin: 20px 0;
-}
-
-/* Blog Card Styling */
-.blog-post {
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  overflow: hidden;
-  background: #fff;
-  margin-bottom: 20px;
-  transition: transform 0.3s ease;
-}
-
-.blog-post:hover {
-  transform: translateY(-3px);
-}
-
-.post-image img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-}
-
-.post-content-wrapper {
-  padding: 16px;
-}
-
-.post-title {
-  margin: 0 0 12px;
-  font-size: 18px;
-  font-weight: bold;
-  text-align: right;
-}
-
-.post-title a {
-  color: #222;
-  text-decoration: none;
-}
-
-.post-title a:hover {
-  color: #007BFF;
-}
-
-.post-snippet {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 10px;
-  text-align: right;
-}
-
-.read-more {
-  display: inline-block;
-  padding: 6px 14px;
-  background-color: #007BFF;
-  color: #fff;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 13px;
-}
-
-.read-more:hover {
-  background-color: #0056b3;
-}
-
-/* Floating Buttons */
-.floating-menu {
-  position: fixed;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.floating-btn {
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  border-radius: 0 25px 25px 0;
-  padding: 8px 12px;
-  font-size: 14px;
-  color: white !important;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-  overflow: hidden;
-  max-width: 40px;
-}
-
-/* أزلت background-color من .floating-btn */
-
-.floating-btn .label {
-  opacity: 0;
-  margin-right: 8px;
-  transition: opacity 0.3s ease;
-}
-
-.floating-btn:hover {
-  max-width: 180px;
-}
-
-.floating-btn:hover .label {
-  opacity: 1;
-}
-.floating-btn.btn:hover i,
-.floating-btn.btn:focus i,
-.floating-btn.btn:active i {
-  color: #fff !important;
+<style>  
+body{background-color:#f4f4f4;margin: 0;
+  padding: 0;overflow-x: hidden;}
+img{max-width:100%;height:auto;}
+header{background-color:#007bff;color:white;padding:20px 0;text-align:center;}
+footer{background-color:#333;color:white;padding:10px 0;text-align:center;}
+.content{padding:40px 0;}
+.card-body{text-align:center;}
+.card{margin:20px 0;}
+.blog-post{border-radius:12px;box-shadow:0 4px 8px rgba(0,0,0,0.1);overflow:hidden;background:#fff;margin-bottom:20px;transition:transform 0.3s ease;}
+.blog-post:hover{transform:translateY(-3px);}
+.post-image img{width:100%;height:150px;object-fit:cover;border-top-left-radius:12px;border-top-right-radius:12px;display:block;}
+.post-content-wrapper{padding:15px;}
+.post-title{margin:0 0 10px;font-size:18px;font-weight:bold;}
+.post-title a{color:#222;text-decoration:none;}
+.post-title a:hover{color:#007BFF;}
+.post-snippet{font-size:14px;color:#555;margin-bottom:10px;}
+.read-more{display:inline-block;padding:6px 12px;background-color:#007BFF;color:#fff;border-radius:6px;text-decoration:none;font-size:13px;}
+.read-more:hover{background-color:#0056b3;}
+html{scroll-behavior:smooth;}
+.floating-menu{position:fixed;top:50%;right:0;transform:translateY(-50%);z-index:1000;display:flex;flex-direction:column;gap:10px;}
+.floating-btn{display:flex;align-items:center;justify-content:start;border-radius:25px 0 0 25px;padding:8px 12px;font-size:14px;transition:all 0.3s ease;white-space:nowrap;overflow:hidden;max-width:40px;}
+.floating-btn .label{opacity:0;margin-left:8px;transition:opacity 0.3s ease;color:white;}
+.floating-btn:hover{max-width:180px;}
+.floating-btn:hover .label{opacity:1;}
 </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 </head>
