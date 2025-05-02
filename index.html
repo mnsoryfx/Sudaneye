@@ -26,7 +26,32 @@
 body{background-color:#f4f4f4;margin: 0;
   padding: 0;overflow-x: hidden;}
 img{max-width:100%;height:auto;}
-header{background-color:#007bff;color:white;padding:20px 0;text-align:center;}
+    /* إنشاء التدرج المتحرك */
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    header {
+        background: linear-gradient(-45deg, #D35400, #f39c12, #ffffff);
+        background-size: 300% 300%;
+        animation: gradientShift 10s ease infinite;
+        color: white;
+        padding: 60px 0;
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+    }
+
+    header p {
+        font-size: 1.25rem;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);}
+ 
 footer{background-color:#333;color:white;padding:10px 0;text-align:center;}
 .content{padding:40px 0;}
 .card-body{text-align:center;}
@@ -55,8 +80,10 @@ html{scroll-behavior:smooth;}
 
     <!-- Header Section -->
     <header>
+    <div class="container">
         <h1>مرحبًا في عين السودان</h1>
         <p>موقع يقدم مجموعة من الخدمات المتنوعة في الأخبار، التحليلات، التسوق، والمزيد من السودان.</p>
+    </div>
     </header>
 
     <!-- Navigation Bar -->
