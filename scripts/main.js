@@ -1,7 +1,7 @@
 class BlogPostsWidget {
   constructor(container) {
     this.container = container;
-    this.API_BASE = 'https://www.sudaneye.site/feeds/posts/default';
+    this.API_BASE = 'https://news.sudaneye.site/feeds/posts/default';
     this.init();
   }
 
